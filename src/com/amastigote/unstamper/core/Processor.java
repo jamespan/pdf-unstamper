@@ -81,6 +81,7 @@ public class Processor {
                     final PDFMarkedContentExtractor extractor = new PDFMarkedContentExtractor();
                     extractor.processPage(pdPage);
 
+                    pdPage.getResources().getCOSObject().getCOSDictionary(COSName.XOBJECT).removeItem(COSName.getPDFName("Fm0"));
                     final List<PDMarkedContent> markedContents = extractor.getMarkedContents();
                     final List<PDMarkedContent> flattenedMarkedContents = new ArrayList<>(markedContents.size());
 
